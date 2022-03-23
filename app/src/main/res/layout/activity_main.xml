@@ -23,8 +23,10 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.855"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.818"
         app:srcCompat="@drawable/pinkhellokitty"
         tools:srcCompat="@drawable/pinkhellokitty" />
 
@@ -33,9 +35,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:hint="Cat Name"
         android:inputType="textPersonName"
         android:text=""
-        android:hint="Cat Name"
         app:layout_constraintBottom_toTopOf="@+id/imageButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -57,5 +59,16 @@
             android:layout_height="wrap_content"
             app:srcCompat="@drawable/pinkhellokitty" />
     </LinearLayout>
+
+    <Button
+        android:id="@+id/button_transiniom_animation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="6dp"
+        android:text="Button Transition Animation"
+        app:layout_constraintBottom_toTopOf="@+id/editTextPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

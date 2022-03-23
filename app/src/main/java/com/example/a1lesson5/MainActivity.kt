@@ -15,6 +15,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+
+
+        button_transiniom_animation.setOnClickListener{
+            textView.setText("Hello button_transiniom_animation ")
+            TransitionManager.beginDelayedTransition(linerLayout)
+            linerLayout.isVisible = !linerLayout.isVisible
+        }
+
         imageButton.setOnClickListener {
             if (editTextPersonName.text.isEmpty()){
                 textView.setText("Hello no name Cat")
