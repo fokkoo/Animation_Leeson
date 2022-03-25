@@ -1,13 +1,14 @@
 package com.example.a1lesson5
 
+import android.animation.ObjectAnimator
+import android.animation.ValueAnimator
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.transition.ChangeBounds
 import android.transition.Fade
 import android.transition.TransitionManager
 import android.transition.TransitionSet
-import android.widget.ImageButton
-import android.widget.TextView
+import android.view.View
 import androidx.core.view.isVisible
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -38,7 +39,7 @@ class MainActivity : AppCompatActivity() {
 
         }
 
-        button_transiniom_animation.setOnClickListener{
+        button_transition_animation.setOnClickListener{
             val constraintSetSampleTextViewIsVisible = linerLayout.isVisible
 
             val transitionSet = if (constraintSetSampleTextViewIsVisible){
@@ -64,5 +65,18 @@ class MainActivity : AppCompatActivity() {
 
 
         }
+
+        button_object_animation.setOnClickListener {
+            val animator = ObjectAnimator.ofFloat(linerLayout, View.ALPHA,0f,1f)
+
+            animator.duration = 300
+            animator.repeatMode = ValueAnimator.REVERSE
+            animator.repeatCount = 5
+
+            animator.start()
+        }
+
+
+
     }
 }
