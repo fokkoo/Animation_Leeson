@@ -66,14 +66,59 @@ class MainActivity : AppCompatActivity() {
 
         }
 
-        button_object_animation.setOnClickListener {
-            val animator = ObjectAnimator.ofFloat(linerLayout, View.ALPHA,0f,1f)
 
+        //отработка нажатия кнопки object_animation , класс который наследуется от value_animation
+
+        button_object_animation_alfa.setOnClickListener {
+           val animator = ObjectAnimator.ofFloat(linerLayout, View.ALPHA,0f,1f)
+          //  val animator = ObjectAnimator.ofArgb(Color.BLACK,Color.RED) // не работает
+
+
+            textView.setText("Hello button_object_animation ")
             animator.duration = 300
             animator.repeatMode = ValueAnimator.REVERSE
             animator.repeatCount = 5
 
             animator.start()
+        }
+
+        //отработка нажатия кнопки object_animation rotation
+        button_object_animation_rotation.setOnClickListener {
+
+            val animator = ObjectAnimator.ofFloat(linerLayout, View.ROTATION,0f,365f)
+
+            textView.setText("Hello button_object_animation_rotation ")
+            animator.duration = 1000
+            animator.repeatMode = ValueAnimator.REVERSE
+            animator.repeatCount = 2
+
+            animator.start()
+        }
+
+
+        //отработка нажатия кнопки value_animation , когда используется какое то условие
+         fun createAlphaValueAnimator(): ValueAnimator {
+            val animator = ValueAnimator.ofFloat(0f, 1f)
+
+            animator.duration = 300
+            animator.repeatMode = ValueAnimator.REVERSE
+            animator.repeatCount = 5
+
+            animator.addUpdateListener { valueAnimator ->
+                val value = valueAnimator.animatedValue as Float
+                textView5.alpha = value
+                textView4.alpha = value
+                linerLayout.alpha=value
+                editTextPersonName.alpha=value
+            }
+        return animator
+        }
+
+
+        button_value_animation.setOnClickListener {
+            textView.setText("Hello button_value_animation ")
+            createAlphaValueAnimator()
+
         }
 
 

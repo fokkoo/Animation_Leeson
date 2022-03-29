@@ -21,11 +21,11 @@
 
     <ImageButton
         android:id="@+id/imageButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="80dp"
+        android:layout_height="109dp"
         app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.889"
+        app:layout_constraintHorizontal_bias="0.951"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
@@ -34,28 +34,29 @@
 
     <EditText
         android:id="@+id/editTextPersonName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="138dp"
+        android:layout_height="48dp"
         android:ems="10"
         android:hint="Cat Name"
         android:inputType="textPersonName"
         android:text=""
         app:layout_constraintBottom_toTopOf="@+id/imageButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.363"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.707" />
 
     <LinearLayout
         android:id="@+id/linerLayout"
         android:layout_width="411dp"
-        android:layout_height="243dp"
+        android:layout_height="300dp"
         android:orientation="vertical"
 
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        tools:layout_editor_absoluteX="0dp">
+        app:layout_constraintStart_toStartOf="@+id/button_value_animation"
+        app:layout_constraintTop_toBottomOf="@+id/textView">
+
 
         <ImageView
             android:id="@+id/imageView2"
@@ -68,6 +69,14 @@
             android:layout_width="88dp"
             android:layout_height="88dp"
             app:srcCompat="@drawable/pinkhellokitty" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="match_parent"
+            android:layout_height="31dp"
+            android:text="TextView" />
+
+
     </LinearLayout>
 
     <Button
@@ -84,11 +93,42 @@
         app:layout_constraintVertical_bias="0.121" />
 
     <Button
-        android:id="@+id/button_object_animation"
+        android:id="@+id/button_object_animation_alfa"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button Object Animation"
+        android:text="Button Object Animation Alfa"
         app:layout_constraintStart_toStartOf="@+id/button_transition_animation"
         app:layout_constraintTop_toBottomOf="@+id/button_transition_animation" />
+    <Button
+        android:id="@+id/button_object_animation_rotation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button Object Animation Rotation"
+        app:layout_constraintStart_toStartOf="@+id/button_transition_animation"
+        app:layout_constraintTop_toBottomOf="@+id/button_object_animation_alfa" />
+
+    <Button
+        android:id="@+id/button_value_animation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button Value Animation"
+        app:layout_constraintStart_toStartOf="@+id/button_object_animation_alfa"
+        app:layout_constraintTop_toBottomOf="@+id/button_object_animation_rotation" />
+    <Button
+        android:id="@+id/button_object_animation_alfa_and_rotation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button Object Animation Set Alfa and Rotation"
+        app:layout_constraintStart_toStartOf="@+id/button_transition_animation"
+        app:layout_constraintTop_toBottomOf="@+id/button_value_animation" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView for button_value_animation "
+        app:layout_constraintBottom_toTopOf="@+id/linerLayout"
+        app:layout_constraintStart_toEndOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/imageButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
