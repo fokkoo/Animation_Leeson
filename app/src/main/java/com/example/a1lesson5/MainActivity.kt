@@ -1,5 +1,6 @@
 package com.example.a1lesson5
 
+import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.animation.ValueAnimator
 import androidx.appcompat.app.AppCompatActivity
@@ -112,6 +113,54 @@ class MainActivity : AppCompatActivity() {
                 editTextPersonName.alpha=value
             }
         return animator
+        }
+
+         fun createAlfaAnimator(): ValueAnimator? {
+             val animator = ValueAnimator.ofFloat(0f, 1f)
+
+             animator.duration = 1000
+             animator.repeatMode = ValueAnimator.REVERSE
+             animator.repeatCount = 5
+
+             animator.addUpdateListener { valueAnimator ->
+                 val value = valueAnimator.animatedValue as Float
+                 textView5.alpha = value
+                 textView4.alpha = value
+                 linerLayout.alpha=value
+                 editTextPersonName.alpha=value
+             }
+             return animator
+        }
+
+        fun createRotationAnimator(): ValueAnimator? {
+            val animator = ObjectAnimator.ofFloat(linerLayout, View.ROTATION,0f,365f)
+
+            animator.duration = 1000
+            animator.repeatMode = ValueAnimator.REVERSE
+            animator.repeatCount = 5
+
+            animator.addUpdateListener { valueAnimator ->
+                val value = valueAnimator.animatedValue as Float
+                textView5.alpha = value
+                textView4.alpha = value
+                linerLayout.alpha=value
+                editTextPersonName.alpha=value
+            }
+            return animator
+        }
+
+
+        //playing together. the change of list chages the resault
+        button_object_animation_alfa_and_rotation.setOnClickListener{
+            val animatorSet = AnimatorSet()
+            val animators = listOf(
+
+                    createRotationAnimator(),
+                    createAlfaAnimator(),
+
+            )
+            animatorSet.playTogether(animators)
+            animatorSet.start()
         }
 
 
