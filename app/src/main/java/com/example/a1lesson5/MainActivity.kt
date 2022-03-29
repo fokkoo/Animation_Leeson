@@ -10,6 +10,7 @@ import android.transition.Fade
 import android.transition.TransitionManager
 import android.transition.TransitionSet
 import android.view.View
+import android.view.animation.DecelerateInterpolator
 import androidx.core.view.isVisible
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -92,6 +93,7 @@ class MainActivity : AppCompatActivity() {
             animator.duration = 1000
             animator.repeatMode = ValueAnimator.REVERSE
             animator.repeatCount = 2
+            animator.interpolator = DecelerateInterpolator()
 
             animator.start()
         }
@@ -121,6 +123,7 @@ class MainActivity : AppCompatActivity() {
              animator.duration = 1000
              animator.repeatMode = ValueAnimator.REVERSE
              animator.repeatCount = 5
+             animator.interpolator = DecelerateInterpolator()
 
              animator.addUpdateListener { valueAnimator ->
                  val value = valueAnimator.animatedValue as Float
@@ -138,6 +141,7 @@ class MainActivity : AppCompatActivity() {
             animator.duration = 1000
             animator.repeatMode = ValueAnimator.REVERSE
             animator.repeatCount = 5
+            animator.startDelay = 1000
 
             animator.addUpdateListener { valueAnimator ->
                 val value = valueAnimator.animatedValue as Float
