@@ -24,6 +24,7 @@
         android:id="@+id/imageButton"
         android:layout_width="80dp"
         android:layout_height="109dp"
+        android:background="?selectableItemBackgroundBorderless"
         app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.951"
