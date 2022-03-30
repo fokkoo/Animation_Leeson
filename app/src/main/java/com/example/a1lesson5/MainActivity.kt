@@ -203,6 +203,32 @@ class MainActivity : AppCompatActivity() {
         }
 
 
+
+        // view property animator наиболее лаконичный способ
+        button_view_property_animation.setOnClickListener {
+            textView.setText("Hello button_view_proprty_animation ")
+
+            if (push_animation_number == true){
+                textView.setText("Hello true")
+                push_animation_number= false;
+                val animator = linerLayout.animate().alpha(0f)
+
+                animator.duration
+                animator.start()
+            } else{
+                textView.setText("Hello false")
+                push_animation_number= true;
+                val animator = linerLayout.animate().alpha(1f)
+                animator.duration
+                animator.start()
+            }
+
+
+
+
+        }
+
+
         button_value_animation.setOnClickListener {
             textView.setText("Hello button_value_animation ")
             createAlphaValueAnimator()

@@ -132,6 +132,13 @@
         android:text="Button Push Animation"
         app:layout_constraintStart_toStartOf="@+id/button_transition_animation"
         app:layout_constraintTop_toBottomOf="@+id/button_object_animation_alfa_and_rotation" />
+    <Button
+        android:id="@+id/button_view_property_animation"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:text="Button View Property Animation"
+        app:layout_constraintStart_toStartOf="@+id/button_transition_animation"
+        app:layout_constraintTop_toBottomOf="@+id/button_push_animation" />
 
     <TextView
         android:id="@+id/textView4"
