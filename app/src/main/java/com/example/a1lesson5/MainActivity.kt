@@ -11,6 +11,7 @@ import android.transition.TransitionManager
 import android.transition.TransitionSet
 import android.view.View
 import android.view.animation.DecelerateInterpolator
+import androidx.constraintlayout.widget.ConstraintSet
 import androidx.core.view.isVisible
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -165,6 +166,40 @@ class MainActivity : AppCompatActivity() {
             )
             animatorSet.playTogether(animators)
             animatorSet.start()
+        }
+
+
+        // перемещение объектов
+
+        var push_animation_number = true;
+
+        button_push_animation.setOnClickListener{
+
+
+
+            TransitionManager.beginDelayedTransition(constraint_layout_animation)
+
+            val constraintSet = ConstraintSet()
+            constraintSet.clone(constraint_layout_animation)
+
+            val parentId = R.id.button_push_animation
+          //  val dailyImageViewId = R.id.imageView2
+         //   val animatorSampleTextViewId = R.id.textView
+
+            if (push_animation_number == true){
+                textView.setText("Hello true")
+                push_animation_number= false;
+                constraintSet.connect(R.id.imageButton,ConstraintSet.BOTTOM,R.id.button_push_animation,ConstraintSet.BOTTOM)
+            } else{
+                textView.setText("Hello false")
+                push_animation_number= true;
+                constraintSet.connect(R.id.imageButton,ConstraintSet.BOTTOM,R.id.button_transition_animation,ConstraintSet.BOTTOM)
+            }
+          // constraintSet.connect(R.id.imageButton,ConstraintSet.BOTTOM,parentId,ConstraintSet.BOTTOM)
+            //constraintSet.connect(animatorSampleTextViewId,ConstraintSet.TOP,dailyImageViewId,ConstraintSet.BOTTOM)
+          // constraintSet.connect(R.id.imageButton,ConstraintSet.TOP,animatorSampleTextViewId,ConstraintSet.BOTTOM)
+
+            constraintSet.applyTo(constraint_layout_animation)
         }
 
 

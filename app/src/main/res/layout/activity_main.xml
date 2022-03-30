@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/constraint_layout_animation"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -47,6 +48,9 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.707" />
 
+
+
+
     <LinearLayout
         android:id="@+id/linerLayout"
         android:layout_width="411dp"
@@ -82,7 +86,7 @@
     <Button
         android:id="@+id/button_transition_animation"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
         android:layout_marginBottom="6dp"
         android:text="Button Transition Animation"
         app:layout_constraintBottom_toTopOf="@+id/editTextPersonName"
@@ -95,14 +99,14 @@
     <Button
         android:id="@+id/button_object_animation_alfa"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
         android:text="Button Object Animation Alfa"
         app:layout_constraintStart_toStartOf="@+id/button_transition_animation"
         app:layout_constraintTop_toBottomOf="@+id/button_transition_animation" />
     <Button
         android:id="@+id/button_object_animation_rotation"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
         android:text="Button Object Animation Rotation"
         app:layout_constraintStart_toStartOf="@+id/button_transition_animation"
         app:layout_constraintTop_toBottomOf="@+id/button_object_animation_alfa" />
@@ -110,17 +114,24 @@
     <Button
         android:id="@+id/button_value_animation"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
         android:text="Button Value Animation"
         app:layout_constraintStart_toStartOf="@+id/button_object_animation_alfa"
         app:layout_constraintTop_toBottomOf="@+id/button_object_animation_rotation" />
     <Button
         android:id="@+id/button_object_animation_alfa_and_rotation"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
         android:text="Button Object Animation Set Alfa and Rotation"
         app:layout_constraintStart_toStartOf="@+id/button_transition_animation"
         app:layout_constraintTop_toBottomOf="@+id/button_value_animation" />
+    <Button
+        android:id="@+id/button_push_animation"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:text="Button Push Animation"
+        app:layout_constraintStart_toStartOf="@+id/button_transition_animation"
+        app:layout_constraintTop_toBottomOf="@+id/button_object_animation_alfa_and_rotation" />
 
     <TextView
         android:id="@+id/textView4"
