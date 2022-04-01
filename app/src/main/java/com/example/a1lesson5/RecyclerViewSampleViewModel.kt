@@ -46,7 +46,7 @@ class RecyclerViewSampleViewModel: ViewModel() {
         val planet8 = planet1.copy(id = UUID.randomUUID().toString())
         val planet9 = planet1.copy(id = UUID.randomUUID().toString())
         val planet10 = planet1.copy(id = UUID.randomUUID().toString())
-
+/*
         val advertisingUiModel1 = AdvertisingUiModel(
             id = UUID.randomUUID().toString(),
             title = "Реклама ботинок",
@@ -58,17 +58,17 @@ class RecyclerViewSampleViewModel: ViewModel() {
             title = "Реклама жвачки",
             description = "Жуйте ботинки, вкусные"
         )
-
+*/
         val items = listOf(
             planet1,
             planet2,
             planet3,
-            advertisingUiModel1,
+           // advertisingUiModel1,
             planet4,
             planet5,
             planet6,
             planet7,
-            advertisingUiModel2,
+           // advertisingUiModel2,
             planet8,
             planet9,
             planet10,
@@ -89,13 +89,13 @@ class RecyclerViewSampleViewModel: ViewModel() {
         itemsLiveData.value = newList
     }
 
-    fun onAdvertisingClick(uiModel: AdvertisingUiModel) {
+  /*  fun onAdvertisingClick(uiModel: AdvertisingUiModel) {
         // open advertising
         // router.openAdvertising
 
         // simple show description
         messagesLiveData.value = uiModel.description
-    }
+    }*/
 
     fun onItemMoved(from: Int, to: Int) {
         val newMutableList = requireCurrentList().toMutableList()
