@@ -15,13 +15,25 @@ import android.view.View
 import android.view.animation.DecelerateInterpolator
 import androidx.constraintlayout.widget.ConstraintSet
 import androidx.core.view.isVisible
+import androidx.fragment.app.commit
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        
         setContentView(R.layout.activity_main)
+
+/*
+        if (savedInstanceState == null) {
+            supportFragmentManager.commit {
+                setReorderingAllowed(true)
+                add<RecyclerViewSampleFragment>(R.id.fragment_container)
+            }
+        }
+*/
+
 
         val hideTextViewSampleTransition by lazy {
             val transitionSet = TransitionSet()
