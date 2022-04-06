@@ -16,6 +16,8 @@ import android.view.animation.DecelerateInterpolator
 import androidx.constraintlayout.widget.ConstraintSet
 import androidx.core.view.isVisible
 import androidx.fragment.app.commit
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -24,6 +26,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         
         setContentView(R.layout.activity_main)
+
+        val recyclerView: RecyclerView = findViewById(R.id.recyclerView)
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.adapter = CustomRecyclerAdapter(getCatList())
+
 
 /*
         if (savedInstanceState == null) {
@@ -247,6 +254,18 @@ class MainActivity : AppCompatActivity() {
 
         }
     }
+
+    private fun fillList(): List<String> {
+        val data = mutableListOf<String>()
+        (0..30).forEach { i -> data.add("$i element") }
+        return data
+    }
+
+    private fun getCatList(): List<String> {
+        return this.resources.getStringArray(R.array.cat_names).toList()
+    }
+
+
 
     private fun createArgbAnimator(): Animator {
         val animator = ValueAnimator.ofArgb(Color.BLACK, Color.RED)

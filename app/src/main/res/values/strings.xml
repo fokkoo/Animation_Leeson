@@ -2,4 +2,34 @@
     <string name="app_name">1 lesson 5</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragmentxxxxxxxxxxxxxxxxxxxxxxxxx</string>
+    <string name="settings_fragment">Hello Settings</string>
+
+    <string-array name="cat_names">
+        <item>Рыжик</item>
+        <item>Рыжик2</item>
+        <item>Рыжик3</item>
+        <item>Барсик</item>
+        <item>к</item>
+        <item>Рик</item>
+        <item>Рыжик</item>
+        <item>Рыжик2</item>
+        <item>Рыжик3</item>
+        <item>Барсик</item>
+        <item>к</item>
+        <item>Рик</item>
+        <item>Рыжик</item>
+        <item>Рыжик2</item>
+        <item>Рыжик3</item>
+        <item>Барсик</item>
+        <item>к</item>
+        <item>Рик</item>
+        <item>Рыжик</item>
+        <item>Рыжик2</item>
+        <item>Рыжик3</item>
+        <item>Барсик</item>
+        <item>к</item>
+        <item>Рик</item>
+        <item>Ррмропик</item>
+
+    </string-array>
 </resources>

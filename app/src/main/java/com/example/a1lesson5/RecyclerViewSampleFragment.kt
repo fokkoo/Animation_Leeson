@@ -18,11 +18,13 @@ class RecyclerViewSampleFragment : Fragment() {
 
     private lateinit var recyclerView: RecyclerView
 
-    private val adapter by lazy{
+    private val adapter by lazy {
         SampleAdapter(
-            onPlanetClickListner = {planet->viewModel.onPlanetClick(planet)},
+            onPlanetClickListener = { planet -> viewModel.onPlanetClick(planet) },
+         //   onAdvertisingClickListener = { planet -> viewModel.onPlanetClick(planet) },
         )
     }
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -42,7 +44,7 @@ class RecyclerViewSampleFragment : Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
         observeViewModel()
-        viewModel.loadData
+        viewModel.loadData()
     }
 
     @SuppressLint("NotifyDataSetChanged")
