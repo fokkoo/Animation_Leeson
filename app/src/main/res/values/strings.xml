@@ -1,7 +1,8 @@
 <resources>
     <string name="app_name">1 lesson 5</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragmentxxxxxxxxxxxxxxxxxxxxxxxxx</string>
+
+    <string name="SETTINGS">KeySettings</string>
     <string name="settings_fragment">Hello Settings</string>
 
     <string-array name="cat_names">
@@ -32,4 +33,6 @@
         <item>Ррмропик</item>
 
     </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

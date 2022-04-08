@@ -15,6 +15,8 @@ import android.view.View
 import android.view.animation.DecelerateInterpolator
 import androidx.constraintlayout.widget.ConstraintSet
 import androidx.core.view.isVisible
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.commit
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -27,19 +29,12 @@ class MainActivity : AppCompatActivity() {
         
         setContentView(R.layout.activity_main)
 
+        readSettings()
+        initeMyView()
+
         val recyclerView: RecyclerView = findViewById(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = CustomRecyclerAdapter(getCatList())
-
-
-/*
-        if (savedInstanceState == null) {
-            supportFragmentManager.commit {
-                setReorderingAllowed(true)
-                add<RecyclerViewSampleFragment>(R.id.fragment_container)
-            }
-        }
-*/
 
 
         val hideTextViewSampleTransition by lazy {
@@ -255,6 +250,45 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun readSettings() {
+        FragmentSettings.radioButtonAddConstant =
+            getSharedPreferences(FragmentSettings.SETTINGS, MODE_PRIVATE).getBoolean(
+                FragmentSettings.RADIO_BUTTON_ADD_FRAGMENT,
+                false
+            )
+    }
+
+    private fun initeMyView() {
+
+        findViewById<View>(R.id.button_fragment_1).setOnClickListener { addFragment(Fragment_Second()) }
+        findViewById<View>(R.id.button_fragment_2).setOnClickListener { addFragment(Fragment_Second()) }
+        findViewById<View>(R.id.button_fragment_settings).setOnClickListener {
+            addFragment(
+                FragmentSettings()
+            )
+        }
+
+
+        findViewById<View>(R.id.button_back).setOnClickListener { v: View? ->
+            if (FragmentSettings.radioButtonAddConstant) {
+                var fragment: Fragment? = null
+                val fragmentList = supportFragmentManager.fragments
+                for (i in fragmentList.indices) {
+                    if (fragmentList[i].isVisible) {
+                        fragment = fragmentList[i]
+                    }
+                }
+                if (fragment != null) {
+                    supportFragmentManager.beginTransaction().remove(fragment).commit()
+                }
+            } else {
+                supportFragmentManager.popBackStack()
+            }
+        }
+    }
+
+
+
     private fun fillList(): List<String> {
         val data = mutableListOf<String>()
         (0..30).forEach { i -> data.add("$i element") }
@@ -279,4 +313,13 @@ class MainActivity : AppCompatActivity() {
         }
         return animator
     }
+
+        private fun addFragment(fragment: Fragment) {
+            val transaction = supportFragmentManager.beginTransaction()
+            transaction.add(R.id.fragment_container, fragment).commit()
+        }
 }
+
+
+
+

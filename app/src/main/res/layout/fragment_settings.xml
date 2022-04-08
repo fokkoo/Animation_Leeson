@@ -86,7 +86,7 @@
         </RadioGroup>
 
         <androidx.appcompat.widget.SwitchCompat
-            android:id="@+id/UseBackeStack"
+            android:id="@+id/switchUseBackeStack"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="UseBackstac" />
