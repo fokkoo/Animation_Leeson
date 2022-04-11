@@ -1,58 +1,114 @@
 package com.example.a1lesson5
 
+import android.animation.ObjectAnimator
+import android.animation.ValueAnimator
+import android.content.Context
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.DecelerateInterpolator
+import android.widget.*
+import androidx.fragment.app.Fragment
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment__second.*
 
-/**
- * A simple [Fragment] subclass.
- * Use the [Fragment_Second.newInstance] factory method to
- * create an instance of this fragment.
- */
+
 class Fragment_Second : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+
         }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+      override fun onCreateView(
+          inflater: LayoutInflater,
+          container: ViewGroup?,
+          savedInstanceState: Bundle?
+      ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment__second, container, false)
+
+          val view = inflater.inflate(R.layout.fragment__second, container, false)
+
+          initView(view)
+
+          return view
     }
 
+    private fun initView(view: View) {
+
+
+        val button_transition_animation_second_fragment = view.findViewById<Button>(R.id.button_transition_animation_second_fragment)
+
+        val texttextViewFragment2 = view.findViewById<TextView>(R.id.textViewFragment2)
+
+        val linerLayoutFragmentt2= view.findViewById<LinearLayout>(R.id.linerLayoutFragment2)
+
+        texttextViewFragment2.setText("Hello")
+
+        button_transition_animation_second_fragment?.setOnClickListener {
+          //  createRotationAnimatorSecondFragment()
+            createAlfaAnimator()
+            
+            textViewFragment2.setText("Button pressed")
+
+            val toast = Toast.makeText(
+                getActivity()?.getApplicationContext(),
+                "Пора покормить кота!", Toast.LENGTH_SHORT
+            )
+            toast.show()
+
+        }
+    }
+
+    fun createAlfaAnimator(): ValueAnimator? {
+        val animator = ValueAnimator.ofFloat(0f, 1f)
+
+        animator.duration = 1000
+        animator.repeatMode = ValueAnimator.REVERSE
+        animator.repeatCount = 50
+        animator.interpolator = DecelerateInterpolator()
+
+        animator.addUpdateListener { valueAnimator ->
+            val value = valueAnimator.animatedValue as Float
+         //   textViewFragment2.alpha = value
+         //   imageViewFragment2.alpha = value
+            imageViewFragment2.alpha = value
+            textViewFragment2.alpha = value
+
+         //   linerLayoutFragment2.alpha = value
+        }
+        return animator
+    }
+
+    fun createRotationAnimatorSecondFragment(): ValueAnimator? {
+        val animator = ObjectAnimator.ofFloat(linerLayoutFragment2, View.ROTATION, 0f, 365f)
+
+        animator.duration = 1000
+        animator.repeatMode = ValueAnimator.REVERSE
+        animator.repeatCount = 500
+        animator.startDelay = 1000
+
+        animator.addUpdateListener { valueAnimator ->
+            val value = valueAnimator.animatedValue as Float
+            imageViewFragment2.alpha = value
+            textViewFragment2.alpha = value
+         //   linerLayout.alpha = value
+         //   editTextPersonName.alpha = value
+        }
+        return animator
+    }
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment Fragment_Second.
-         */
-        // TODO: Rename and change types and number of parameters
+
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
             Fragment_Second().apply {
                 arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+
                 }
             }
     }

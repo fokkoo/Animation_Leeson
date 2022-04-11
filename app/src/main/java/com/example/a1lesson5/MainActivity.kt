@@ -5,7 +5,6 @@ import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.animation.ValueAnimator
 import android.graphics.Color
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.transition.ChangeBounds
 import android.transition.Fade
@@ -13,11 +12,11 @@ import android.transition.TransitionManager
 import android.transition.TransitionSet
 import android.view.View
 import android.view.animation.DecelerateInterpolator
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintSet
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentTransaction
-import androidx.fragment.app.commit
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.activity_main.*
@@ -256,11 +255,21 @@ class MainActivity : AppCompatActivity() {
                 FragmentSettings.RADIO_BUTTON_ADD_FRAGMENT,
                 false
             )
+
+
     }
 
     private fun initeMyView() {
 
-        findViewById<View>(R.id.button_fragment_1).setOnClickListener { addFragment(Fragment_Second()) }
+        findViewById<View>(R.id.button_fragment_1).setOnClickListener {
+            addFragment(Fragment_First())
+
+            val toast = Toast.makeText(
+                applicationContext,
+                "Кнопка первого фрагмента вызвана", Toast.LENGTH_SHORT
+            )
+            toast.show()
+        }
         findViewById<View>(R.id.button_fragment_2).setOnClickListener { addFragment(Fragment_Second()) }
         findViewById<View>(R.id.button_fragment_settings).setOnClickListener {
             addFragment(
@@ -316,7 +325,15 @@ class MainActivity : AppCompatActivity() {
 
         private fun addFragment(fragment: Fragment) {
             val transaction = supportFragmentManager.beginTransaction()
-            transaction.add(R.id.fragment_container, fragment).commit()
+            if(FragmentSettings.radioButtonAddConstant){
+
+                transaction.add(R.id.fragment_container, fragment)
+
+            }else{
+
+                transaction.replace(R.id.fragment_container, fragment)
+            }
+            transaction.commit()
         }
 }
 

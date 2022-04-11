@@ -10,7 +10,6 @@ import android.widget.CompoundButton
 import android.widget.RadioButton
 import androidx.appcompat.widget.SwitchCompat
 
-
 class FragmentSettings : Fragment() {
 
 
@@ -27,8 +26,8 @@ class FragmentSettings : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-
         val view = inflater.inflate(R.layout.fragment_settings, container, false)
+
         initView(view)
         return view
 
@@ -47,35 +46,45 @@ class FragmentSettings : Fragment() {
        // radioButtonAdd.setOnCheckedChangeListener(button,is)
 
 
+
         radioButtonAdd.setOnCheckedChangeListener { buttonView: CompoundButton?, isChecked: Boolean ->
             FragmentSettings.radioButtonAddConstant = isChecked
             // save in shared preferensec
             writeSettings()
         }
+        radioButtonAdd.setChecked(radioButtonAddConstant)
+
 
         radioButtonReplace.setOnCheckedChangeListener { buttonView: CompoundButton?, isChecked: Boolean ->
             FragmentSettings.radioButtonReplaceConstant = isChecked
             // save in shared preferensec
             writeSettings()
         }
+        radioButtonReplace.setChecked(radioButtonReplaceConstant)
+
 
         switchCompatBackAsRemove.setOnCheckedChangeListener { buttonView: CompoundButton?, isChecked: Boolean ->
             FragmentSettings.switchCompatBackAsRemoveConstant = isChecked
             // save in shared preferensec
             writeSettings()
         }
+        switchCompatBackAsRemove.setChecked(switchCompatBackAsRemoveConstant)
+
 
         switchCompatDeliteBiforeRemove.setOnCheckedChangeListener { buttonView: CompoundButton?, isChecked: Boolean ->
             FragmentSettings.switchCompatDeliteBiforeRemoveConstant = isChecked
             // save in shared preferensec
             writeSettings()
         }
+        switchCompatDeliteBiforeRemove.setChecked(switchCompatDeliteBiforeRemoveConstant)
+
 
         switchCompatUseBackstack.setOnCheckedChangeListener { buttonView: CompoundButton?, isChecked: Boolean ->
             FragmentSettings.switchCompatUseBackstackConstant = isChecked
             // save in shared preferensec
             writeSettings()
         }
+        switchCompatUseBackstack.setChecked(switchCompatUseBackstackConstant)
 
 
     }
