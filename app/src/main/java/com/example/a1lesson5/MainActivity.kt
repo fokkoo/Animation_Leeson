@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        
+
         setContentView(R.layout.activity_main)
 
         readSettings()
@@ -279,23 +279,54 @@ class MainActivity : AppCompatActivity() {
 
 
         findViewById<View>(R.id.button_back).setOnClickListener { v: View? ->
-            if (FragmentSettings.radioButtonAddConstant) {
+            if (FragmentSettings.switchCompatBackAsRemoveConstant) {
+
+
+
                 var fragment: Fragment? = null
-                val fragmentList = supportFragmentManager.fragments
+                val fragmentList = getSupportFragmentManager().getFragments()
+                var fragmentSIZE = fragmentList.size
+                //fragmentList.indices
+                // for (i in 0..fragmentSIZE) {
                 for (i in fragmentList.indices) {
-                    if (fragmentList[i].isVisible) {
-                        fragment = fragmentList[i]
+                    if (fragmentList.get(i).isVisible) {
+                        fragment = fragmentList.get(i)
+
+                        getSupportFragmentManager()
+                            .beginTransaction()
+                            .remove(fragment)
+
+                        val toast = Toast.makeText(
+                            applicationContext,
+                            "fragmentList.get(i).isVisible", Toast.LENGTH_SHORT
+                        )
+                        toast.show()
                     }
                 }
                 if (fragment != null) {
-                    supportFragmentManager.beginTransaction().remove(fragment).commit()
+                    getSupportFragmentManager()
+                        .beginTransaction()
+                        .remove(fragment)
+                        .commit()
+
+
+                    val toast = Toast.makeText(
+                        applicationContext,
+                        "fragment != null", Toast.LENGTH_SHORT
+                    )
+                    toast.show()
                 }
+
             } else {
-                supportFragmentManager.popBackStack()
+                getSupportFragmentManager().popBackStack()
+
+                val toast = Toast.makeText(
+                    applicationContext,
+                    "FragmentSettings.switchCompatBackAsRemoveConstant else", Toast.LENGTH_SHORT
+                )
             }
         }
     }
-
 
 
     private fun fillList(): List<String> {
@@ -307,7 +338,6 @@ class MainActivity : AppCompatActivity() {
     private fun getCatList(): List<String> {
         return this.resources.getStringArray(R.array.cat_names).toList()
     }
-
 
 
     private fun createArgbAnimator(): Animator {
@@ -323,18 +353,51 @@ class MainActivity : AppCompatActivity() {
         return animator
     }
 
-        private fun addFragment(fragment: Fragment) {
-            val transaction = supportFragmentManager.beginTransaction()
-            if(FragmentSettings.radioButtonAddConstant){
 
-                transaction.add(R.id.fragment_container, fragment)
+    private fun getFragment(){
+        var fragment: Fragment? = null
+        val fragmentList = getSupportFragmentManager().getFragments()
+        for (i in fragmentList.indices) {
+            if (fragmentList.get(i).isVisible) {
+                fragment = fragmentList.get(i)
 
-            }else{
 
-                transaction.replace(R.id.fragment_container, fragment)
+                val toast = Toast.makeText(
+                    applicationContext,
+                    "switchCompatDeliteBiforeRemoveConstant", Toast.LENGTH_SHORT
+                )
+                toast.show()
             }
-            transaction.commit()
         }
+    }
+
+    private fun addFragment(fragment: Fragment) {
+        val transaction = supportFragmentManager.beginTransaction()
+
+        if (FragmentSettings.switchCompatUseBackstackConstant) {
+
+
+            // добавляем имя nulчтобы знать до какого номера вытолкнуть фрагмент
+            transaction.addToBackStack(null)
+        }
+
+
+        if (FragmentSettings.switchCompatDeliteBiforeRemoveConstant) {
+
+
+        }
+
+        if (FragmentSettings.radioButtonAddConstant) {
+
+          transaction.add(R.id.fragment_container, fragment)
+
+
+        } else {
+
+            transaction.replace(R.id.fragment_container, fragment)
+        }
+        transaction.commit()
+    }
 }
 
 
