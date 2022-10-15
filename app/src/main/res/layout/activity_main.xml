@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/constraint_layout_animation"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,55 +8,238 @@
     android:background="@color/design_default_color_secondary"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="600dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:layout_editor_absoluteX="9dp">
 
-    <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="wrap_content"
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
+
+        android:orientation="horizontal"
+        tools:ignore="MissingConstraints">
+        <Button
+            android:id="@+id/button_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="back"
+            android:layout_margin="1dp"
+            android:layout_weight="1"
+            ></Button>
+        <Button
+            android:id="@+id/button_fragment_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="frag1"
+            android:layout_margin="1dp"
+            android:layout_weight="1"
+            ></Button>
+        <Button
+            android:id="@+id/button_fragment_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="frag2"
+            android:layout_margin="1dp"
+            android:layout_weight="1"
+            ></Button>
+        <Button
+            android:id="@+id/button_fragment_settings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="frag3"
+            android:layout_margin="1dp"
+            android:layout_weight="1"
+
+            ></Button>
+
+    </LinearLayout>
+
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:visibility="gone"
+        android:id="@+id/recyclerView"
+        android:layout_width="418dp"
+        android:layout_height="586dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:scrollbars="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        tools:listitem="@layout/recyclerview_item" />
+
+    <fragment
+        android:visibility="gone"
+        android:id="@+id/cat_fragment"
+        android:name="com.example.a1lesson5.RecyclerViewSampleFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="224dp"
+        android:text="Text Animation from Res to Black"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/button_value_animation"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.561" />
+
+    <ImageButton
+        android:visibility="gone"
+        android:id="@+id/imageButton"
+        android:layout_width="80dp"
+        android:layout_height="109dp"
+        android:background="?selectableItemBackgroundBorderless"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.951"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/pinkhellokitty"
         tools:srcCompat="@drawable/pinkhellokitty" />
 
+
     <EditText
+        android:visibility="gone"
         android:id="@+id/editTextPersonName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="138dp"
+        android:layout_height="48dp"
         android:ems="10"
+        android:hint="Cat Name"
         android:inputType="textPersonName"
         android:text=""
-        android:hint="Cat Name"
         app:layout_constraintBottom_toTopOf="@+id/imageButton"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.981"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.465" />
 
     <LinearLayout
+
         android:id="@+id/linerLayout"
-        android:layout_width="match_parent"
-        android:layout_height="88dp"
+        android:layout_width="411dp"
+        android:layout_height="300dp"
         android:orientation="vertical"
 
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        tools:layout_editor_absoluteX="188dp">
+        app:layout_constraintStart_toStartOf="@+id/button_value_animation"
+        app:layout_constraintTop_toBottomOf="@+id/textView">
+
 
         <ImageView
             android:id="@+id/imageView2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="85dp"
             app:srcCompat="@drawable/pinkhellokitty" />
+
+
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="match_parent"
+            android:layout_height="31dp"
+            android:text="TextView" />
+
+
     </LinearLayout>
+
+    <Button
+        android:visibility="gone"
+        android:id="@+id/button_transition_animation"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="6dp"
+        android:text="Button Transition Animation"
+        app:layout_constraintBottom_toTopOf="@+id/editTextPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.022"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.121" />
+
+    <Button
+        android:visibility="gone"
+        android:id="@+id/button_object_animation_alfa"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="Button Object Animation Alfa"
+        app:layout_constraintStart_toStartOf="@+id/button_transition_animation"
+        app:layout_constraintTop_toBottomOf="@+id/button_transition_animation" />
+    <Button
+        android:visibility="gone"
+        android:id="@+id/button_object_animation_rotation"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="Button Object Animation Rotation"
+        app:layout_constraintStart_toStartOf="@+id/button_transition_animation"
+        app:layout_constraintTop_toBottomOf="@+id/button_object_animation_alfa" />
+
+    <Button
+        android:visibility="gone"
+        android:id="@+id/button_value_animation"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="Button Value Animation"
+        app:layout_constraintStart_toStartOf="@+id/button_object_animation_alfa"
+        app:layout_constraintTop_toBottomOf="@+id/button_object_animation_rotation" />
+    <Button
+        android:visibility="gone"
+        android:id="@+id/button_object_animation_alfa_and_rotation"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="Button Object Animation Set Alfa and Rotation"
+        app:layout_constraintStart_toStartOf="@+id/button_transition_animation"
+        app:layout_constraintTop_toBottomOf="@+id/button_value_animation" />
+    <Button
+        android:visibility="gone"
+        android:id="@+id/button_push_animation"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="Button Push Animation"
+        app:layout_constraintStart_toStartOf="@+id/button_transition_animation"
+        app:layout_constraintTop_toBottomOf="@+id/button_object_animation_alfa_and_rotation" />
+    <Button
+        android:visibility="gone"
+        android:id="@+id/button_view_property_animation"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="Button View Property Animation"
+        app:layout_constraintStart_toStartOf="@+id/button_transition_animation"
+        app:layout_constraintTop_toBottomOf="@+id/button_push_animation" />
+    <Button
+        android:visibility="gone"
+        android:id="@+id/button_ARGB_animation"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="button_ARGB_animation"
+        app:layout_constraintStart_toStartOf="@+id/button_transition_animation"
+        app:layout_constraintTop_toBottomOf="@+id/button_view_property_animation" />
+
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView for button_value_animation "
+        app:layout_constraintStart_toEndOf="@+id/button_transition_animation"
+        app:layout_constraintTop_toTopOf="@+id/button_transition_animation" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
